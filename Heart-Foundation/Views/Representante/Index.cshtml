@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="col m12">
+        <div class="form-group center">
+            <div class="text-center">
+                <a class="btn btn-primary" href=" @Url.Action("Crear","Representante")">Nuevo Representante</a>
+                <a class="btn btn-danger" href=" @Url.Action("Admin", "Home")">Regresar</a> <!--Regresa a la página anterior-->
+            </div>
+        </div>
+    </div>
+    <br />
+    <h2>Lista de Solicitudes</h2>
+    <div class="table-responsive">
+        <table id="miTablaR" class="table table-striped table-bordered table-hover dataTables-List" style="table-layout:fixed;">
+            <thead>
+                <tr class="table table-bordered">
+                    <th class="table-success">
+                        Nombre Representante
+                    </th>
+                    <th class="table-success">
+                        Cargo
+                    </th>
+                    <th class="table-success">
+                       Empresa
+                    </th>
+                    <th class="table-success">
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@* imagen *@
+<div class="modal" id="modalimage" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn btn-danger close" data-dismiss="modal" aria-label="Close" onclick="closemodal(this);">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <img id="miImagen" class="img-thumbnail" width="400" height="50">
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/js/datatables/tablas/global.js"></script>
+<script src="~/js/datatables/tablas/representanteinstitucion.js"></script>

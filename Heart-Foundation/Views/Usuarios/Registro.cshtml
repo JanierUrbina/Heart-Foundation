@@ -1,0 +1,142 @@
+﻿@model Heart_Foundation.ViewModels.UsuarioViewModel
+@{
+    ViewData["Title"] = "Registro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+
+
+<style>
+    .form-control.standardSelect {
+        height: 40px;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px 0 #ccc;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+        background-repeat: no-repeat, repeat;
+        background-position: right .7em top 50%, 0 0;
+        background-size: .65em auto, 100%;
+    }
+
+        .form-control.standardSelect:hover {
+            border-color: #888;
+        }
+
+        .form-control.standardSelect option {
+            padding: 10px;
+        }
+</style>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="container">
+<div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+            @if(Model.Id!=null)
+            {
+                <h1>Editar Usuario @Model.NomUsuario</h1>
+            }
+            else
+            {
+                <h1>Registrar Usuario</h1>
+            }
+           <hr />
+        </div>
+
+      
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" }) @*muestra los mensajes de error*@
+        @using (Html.BeginForm("Registro", "Usuarios", FormMethod.Post, new { @onsubmit = "return handleFormSubmit();" }))
+        {
+            @if (Model.NombreCompleto != "")
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.IdSU)
+            }
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <label class="col-md-2 control-label" for="NomUsuario">Usuario</label>
+                <div class="form-field d-flex align-items-center">
+                    @Html.Editor("NomUsuario", new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="field-validation-valid text-danger" data-valmsg-for="NomUsuario" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+                <div class="col-sm-6">
+                    <label class="col-md-2 control-label" for="NombreCompleto">Nombre</label>
+                    <div class="form-field d-flex align-items-center">
+                        @Html.Editor("NombreCompleto", new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="field-validation-valid text-danger" data-valmsg-for="NombreCompleto" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="col-md-2 control-label" for="Telefono">Teléfono</label>
+                    <div class="form-field d-flex align-items-center">
+                        @Html.Editor("Telefono", new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Telefono" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            <!--Correo-->
+            <div class="col-sm-6">
+                <label class="col-md-2 control-label" for="correo">Correo</label>
+                <div class="form-field d-flex align-items-center">
+                    @Html.Editor("correo", new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="field-validation-valid text-danger" data-valmsg-for="correo" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label class="col-md-2 control-label" for="Password">Contraseña</label>
+                <div class="form-field d-flex align-items-center">
+                    @Html.Editor("Password", new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                 <label class="col-md-2 control-label" >Roles</label>
+              @Html.ListBox("nombrerol", ViewBag.roles, new { @class = "form-control btn-block", @title = "Campo Requerido", @required = "required", @id="choices-multiple-remove-button"  })
+          </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <hr /><br />
+            <div class="form-group">
+                <div class="text-center">
+                    <input id="mySelect" type="submit" class="btn btn-primary submit" value="Registrarse" />
+                    <a class="btn btn-danger" onclick="window.location = document.referrer;">Cancelar</a> <!--Regresa a la página anterior-->
+                </div>
+            </div>
+         </div>
+     
+     }
+</div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/datatables/tablas/global.js"></script>
+       <script>
+        $(document).ready(function(){
+    
+     var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+        removeItemButton: true,
+        maxItemCount:5,
+        searchResultLimit:5,
+        renderChoiceLimit:5
+      }); 
+     
+     
+ });
+    </script>
+}

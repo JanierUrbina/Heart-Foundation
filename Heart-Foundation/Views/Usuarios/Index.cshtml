@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rol = "";
+    var esAdmin = rol == "Admin" ? true : false;
+}
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+<div class="col m12">
+    <div class="form-group center">
+        <div class="text-center">
+            
+            <a class="btn btn-primary" href=" @Url.Action("Registro","Usuarios")">Crear</a>
+            <a class="btn btn-danger" href=" @Url.Action("Admin", "Home")">Regresar</a> <!--Regresa a la página anterior-->
+        </div>
+    </div>    
+</div>
+<br />
+<h2>Lista de Usuarios</h2>
+<div class="table-responsive">
+    <table id="miTabla" class="table table-striped table-bordered table-hover dataTables-List" style="table-layout:fixed;">
+        <thead>
+            <tr class="table table-bordered">
+                <th class="table-success">
+                    Nombre
+                </th>
+                <th class="table-success">
+                    Correo
+                </th>
+                <th class="table-success">
+                    Fecha Creación
+                </th>
+                <th class="table-success">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+</div>
+
+
+@*Actualizar Contraseña*@
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                Cambio de contraseña de emergencia
+
+            </div>
+            <div class="modal-body">
+                Digite su nueva contraseña
+                <input type="password" id="contra" />
+            </div>
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-success" onclick="update()">Actualizar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closemodal(this);">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/datatables/tablas/global.js"></script>
+<script src="~/js/datatables/tablas/usuarios.js"></script>

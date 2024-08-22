@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rol = "";
+    var esAdmin = rol == "Admin" ? true : false;
+}
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="col m12">
+        <div class="form-group center">
+            <div class="text-center">
+                <a class="btn btn-danger" href=" @Url.Action("Admin", "Home")">Regresar</a> <!--Regresa a la página anterior-->
+            </div>
+        </div>
+    </div>
+    <br />
+    <h2>Lista de Solicitudes</h2>
+    <div class="table-responsive">
+        <table id="miTablaS" class="table table-striped table-bordered table-hover dataTables-List" style="table-layout:fixed;">
+            <thead>
+                <tr class="table table-bordered">
+                    <th class="table-success">
+                        Nombre
+                    </th>
+                    <th class="table-success">
+                        Correo
+                    </th>
+                    <th class="table-success">
+                        Número Telefónico
+                    </th>
+                    <th class="table-success">
+                        Tipo Usuario
+                    </th>
+                    <th class="table-success">
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+@* Mensaje del solicitante *@
+<div class="modal fade" id="msjModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+               Mensaje
+
+            </div>
+            <input disabled id="mensaje"/>
+           
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closemodal(this);">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/datatables/tablas/global.js"></script>
+<script src="~/js/datatables/tablas/solicitudusuarios.js"></script>

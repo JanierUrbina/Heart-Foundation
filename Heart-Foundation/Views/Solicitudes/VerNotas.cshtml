@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Heart_Foundation.Models.Solicitudes.Nota>
+
+<div class="modal-content">
+    <div class="modal-body">
+        <div class="modal-header">
+
+            <button type="button" class="btn btn-danger close" data-dismiss="modal" aria-label="Close" onclick="closemodal(this);">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+        <table id="notas" class="bordered listnota datatables super-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Etapa)
+                    </th>
+                    <th>
+                        Tipo de Notificación
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mensaje)
+                    </th>
+                    <th>
+                        Fecha Envío
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.OrderByDescending(x => x.FechaCreacion))
+                {
+
+                    <tr>
+                            @if (item.Etapa.IdentificadorEtapa==0)
+                            {
+                                <td> Inicio Solicitud</td>
+                            }
+                            else if(item.Etapa.IdentificadorEtapa == 1)
+                            {
+                                <td>Procesameinto</td>
+                            }
+                           else if (item.Etapa.IdentificadorEtapa == 2)
+                           {
+                               <td>Rechazo</td>
+                           }
+                             else if (item.Etapa.IdentificadorEtapa == 3)
+                             {
+                                 <td>Finalizado</td>
+                             }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoNota)
+                        </td>
+                        <td style="text-align:justify">
+                            @Html.DisplayFor(modelItem => item.Mensaje)
+                        </td>
+                        <td>
+                            @item.FechaHoraMensje.ToString("yyyy-MM-dd HH:mm:ss")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+</table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#notas').DataTable({
+            "scrollCollapse": true,
+            "paging": true,
+            "pageLength": 10, // Número máximo de registros por página
+            "lengthMenu": [10, 25, 50, 75, 100], // Opciones de longitud de página
+            "dom": '<"top some"f>rt<"bottom"p><"clear">',
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        });
+
+        $("#modalfooter1").empty();
+        $("#modalfooter1").append('<button value="Cerrar" class="modal-action modal-close btn btncan onclick="$(".modal").modal("close");">Cerrar</button>');
+
+    });
+
+</script>

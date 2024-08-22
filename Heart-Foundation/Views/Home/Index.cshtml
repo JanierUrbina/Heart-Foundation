@@ -1,0 +1,196 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <body id="page-top">
+        
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                  <!-- Masthead Heading-->
+            <h1 class="masthead-heading text-uppercase mb-0">Heart Foundation</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+               
+            </div>
+        </header>
+        <!-- Portfolio Section-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+              
+            </div>
+        </section>
+        <!-- About Section-->
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white">Nosotros</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- About Section Content-->
+                <div class="row">
+                    <div class="col-lg-4 ms-auto"><p class="lead">SOMOS UNA INSTITUCIÓN SIN FINES DE LUCRO, CON PASIÓN POR AYUDAR A LOS DEMÁS A TRAVÉS DE BUENOS CORAZONES</p></div>
+                    <div class="col-lg-4 me-auto"><p class="lead">SI SIENTES QUE PUEDES AYUDAR, NO DUDES EN CONTACATARNOS!</p></div>
+                </div>               
+            </div>
+        </section>
+
+        <!-- Contact Section-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <!-- Contact Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contáctanos</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Contact Section Form-->
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-7">
+
+                    <form id="solForm">
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                            <input class="form-control" id="Nombre" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                            <label for="Nombre">Nombre Completo</label>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                            <input class="form-control" id="Correo" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <label for="email">Correo electrónico</label>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-3">
+                            <input class="form-control" id="NumeroTelefonico" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                            <label for="NumeroTelefonico">Número Telefónico</label>
+                            </div>
+                        <div class="form-floating mb-3"> 
+                            <select class="form-control" style="height: -2rem" data-sb-validations="required" id="TipoUsuario">
+                             <option value="0">Representante</option>
+                             <option value="1">Usuario</option>
+                         </select>
+                        </div>
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                            <textarea class="form-control" id="Mensaje" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                            <label for="Mensaje">Mensaje</label>
+                            </div>
+                            <!-- Submit Button-->
+                        <button class="btn btn-primary btn-xl" type="submit" id="sub">Enviar</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Footer-->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Ubicación</h4>
+                    <p class="lead mb-0">
+                        2215
+                        <br />
+                       Managua, Nicaragua
+                    </p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Redes Sociales</h4>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-4">
+                    <h4 class="text-uppercase mb-4">Plantilla</h4>
+                    <p class="lead mb-0">
+                        Conocer más acerca de
+                        <a href="http://startbootstrap.com">Esta plantilla</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+       
+    </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        
+        console.log("Documento listo"); // Verifica si este mensaje aparece en la consola
+
+            $('#solForm').submit(function (event) {
+                event.preventDefault();
+
+            console.log($(this)); // Verifica si este mensaje aparece en la consola
+                var model = {
+                Nombre: $(this)[0][0].value,
+                Correo: $(this)[0][1].value,
+                NumeroTelefonico: $(this)[0][2].value,
+                TipoUsuario: $(this)[0][3].value,
+                Mensaje: $(this)[0][4].value
+                };
+
+            // Valida que todos los campos del FormData estén llenos correctamente, excluyendo el campo Img
+            if (!validateModel(model)) {
+                swal("", "Campos incompletos", "warning");
+            }else
+            {
+                $("#sub").prop("disabled", "disabled");
+                // Envía el FormData a través de AJAX
+                $.ajax({
+                    url: '@Url.Action("Solicitud", "Solicitudusuario")',
+                    type: 'POST',
+                    data: JSON.stringify(model),
+                    processData: false,  // Evita que jQuery convierta el FormData en una cadena de consulta
+                    contentType: false,  // No establece el encabezado Content-Type, jQuery lo establecerá correctamente
+                    success: function (response) {
+                        if (response.success) {
+                            swal("Éxito", "Se guardó correctamente", "success");
+                            $("button.confirm").text("Aceptar").click(function () { location.href = "" });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        swal("Error", "No se pudo guardar", "error");
+                    }
+                });
+            }
+           
+           
+        });
+    });
+
+    // Función de validación
+    function validateModel(model) {
+        for (var key in model) {
+            if (model[key].trim() === '') {
+                return false; // Si algún campo está vacío, retorna false
+            }
+        }
+        return true; // Todos los campos están llenos
+    }
+
+</script>
+

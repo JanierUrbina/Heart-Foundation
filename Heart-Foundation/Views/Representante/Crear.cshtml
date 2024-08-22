@@ -1,0 +1,99 @@
+﻿@model Heart_Foundation.ViewModels.RepresentanteViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div id="flStackForm" class="col-lg-12 layout-spacing layout-top-spacing">
+            <div class="statbox widget box box-shadow">
+                <br />
+                <div class="widget-header">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                            @if (Model.Representante.Id != 0)
+                            {
+                                <h1>Editar Representante @Model.Representante.NombreCompleto</h1>
+                            }
+                            else
+                            {
+                                <h1>Registrar Representante</h1>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <form asp-action="Crear" method="post" id="producto-form" enctype="multipart/form-data">
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label asp-for="Representante.NombreCompleto" class="control-label">Nombre Completo</label>
+                            @Html.EditorFor(model => model.Representante.NombreCompleto, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Representante.NombreCompleto, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label asp-for="Representante.Cargo" class="control-label">Cargo</label>
+                            @Html.EditorFor(model => model.Representante.Cargo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Representante.Cargo, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label asp-for="Representante.UserName" class="control-label">Representantes</label>
+                            @Html.DropDownListFor(model => model.Representante.UserName, (SelectList)ViewBag.Representantes, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Representante.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <h4>Institución</h4>
+                        <div class="col-sm-6">
+                            <label asp-for="Institucion.Nombre" class="control-label">Nombre</label>
+                            @Html.EditorFor(model => model.Institucion.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Institucion.Nombre, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label asp-for="Institucion.Descripcion" class="control-label">Descripción</label>
+                            @Html.EditorFor(model => model.Institucion.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Institucion.Descripcion, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label asp-for="Institucion.UbicacionFileLogo" class="control-label">Logo Institución</label>
+                            @Html.EditorFor(model => model.Institucion.UbicacionFileLogo, new { htmlAttributes = new { @class = "form-control", type = "file", @accept="image/*" } })
+                            @Html.ValidationMessageFor(model => model.Institucion.UbicacionFileLogo, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label asp-for="Institucion.AreaEmpresa" class="control-label">Área Empresa</label>
+                            <div>
+                                <input type="radio" id="gubernamental" name="Institucion.AreaEmpresa" value="0" @(Model.Institucion.AreaEmpresa == 0 ? "checked" : "")>
+                                <label for="gubernamental">Gubernamental</label>
+                                <input type="radio" id="privada" name="Institucion.AreaEmpresa" value="1" @(Model.Institucion.AreaEmpresa == 1 ? "checked" : "")>
+                                <label for="privada">Privada</label>
+                                <input type="radio" id="anonima" name="Institucion.AreaEmpresa" value="2" @(Model.Institucion.AreaEmpresa == 2 ? "checked" : "")>
+                                <label for="anonima">Anónima</label>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Institucion.AreaEmpresa, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <center>
+                            <input type="submit" value="Guardar" class="btn btn-info" />
+                            <a href="@Url.Action("Index")" class="btn btn-info">Regresar</a>
+                        </center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

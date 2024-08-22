@@ -1,0 +1,143 @@
+﻿@model Heart_Foundation.Models.Solicitudes.Solicitud
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+<head>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="~/js/leaflet/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
+</head>
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <div class="row">   
+        <div id="flStackForm" class="col-lg-12 layout-spacing layout-top-spacing">
+            <div class="statbox widget box box-shadow">
+                <br />
+                <div class="widget-header">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                            @if (Model.Id != 0)
+                            {
+                                <h1>Editar Solicitud @Model.NumeroSolicitud</h1>
+                            }
+                            else
+                            {
+                                <h1>Registrar Solicitud</h1>
+                            }
+                           
+                        </div>
+                    </div>
+                </div>
+                <form asp-action="Solicitud" method="post" id="producto-form" onsubmit="return handleFormSubmit();">
+                    @if(Model.Id!=0)
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.HiddenFor(x => x.idpersona)
+                        @Html.HiddenFor(x => x.NumeroSolicitud)
+                        @Html.HiddenFor(x => x.Estado)
+                        @Html.HiddenFor(x => x.EstadoSolicitud)
+                        @Html.HiddenFor(x => x.Etapas)
+                        @Html.HiddenFor(x => x.FechaCreacion)
+                        @Html.HiddenFor(x => x.FechaModificacion)
+                        @Html.HiddenFor(x => x.Ubicacion)
+                    }
+                    
+                    <div class="form-group row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-sm-6">
+                            <label asp-for="Nombre" class="control-label">Nombre</label>
+                            @Html.Editor("NombreCompleto", new { htmlAttributes = new { @class = "form-control" } })
+                            <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-6">
+                            <label asp-for="Direccion" class="control-label">Direccion</label>
+                            @Html.Editor("Direccion", new { htmlAttributes = new { @class = "form-control" } })
+                            <span asp-validation-for="Direccion" class="text-danger"></span>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <div class="col-sm-6">
+                            <label asp-for="Cantidad" class="control-label">Motivo</label>
+                            @Html.Editor("Motivo", new { htmlAttributes = new { @class = "form-control" } })
+                            <span asp-validation-for="Motivo" class="text-danger"></span>
+                        </div>
+                       
+                        <div class="col-sm-6">
+                            <br />
+                            <div class="card">
+                            <div class="card-body">
+                                    @{
+                                        string valorx = "";
+                                        string valory = "";
+                                    }
+                                @if(Model.Id!=0)
+                                    {
+                                        var xy = Model.Ubicacion.Split(',');
+                                        valorx = xy[0];
+                                        valory = xy[1].TrimStart(' ');
+                                    }
+                                    <div class="form-group">
+                                        <label class="control-label">Latitud</label>
+                                        <input id="latitud" class="form-control" required title="Campo Requerido" placeholder="######.####" value="@valorx" />
+                                        <span asp-validation-for="latitud" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">Longitud</label>
+                                        <input id="longitud" class="form-control" required title="Campo Requerido" placeholder="#######.####" value="@valory" />
+                                        <span asp-validation-for="longitud" class="text-danger"></span>
+                                    </div>
+                               
+
+                                 <div class="col-sm-6" hidden="hidden">
+                                     <label asp-for="Img" class="control-label">Ubicacion</label>
+                                     @Html.Editor("Ubicacion", new { htmlAttributes = new { @class = "form-control", @hidden="hidden"} })
+                                     <span asp-validation-for="Ubicacion" class="text-danger"></span>
+                                 </div>
+                                    <br />
+                                <center>
+                                     <span id="bnLatLn" class="btn btn-success" onclick="ConsultarLtLn()">Ubicar</span>
+                                </center>
+                       
+                            </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <center>
+                            <input type="submit" value="Guardar" class="btn btn-info submit" />
+                            <a href="@Url.Action("MisSolicitudes")" class="btn btn-info">Regresar</a>
+                        </center>
+
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    @*MAPA*@
+    <div class="row">
+        <div class="col-md-12">
+            <div id="map" style="width: 1100px; height: 500px; position:center"></div>
+
+        </div>
+    </div>
+</div>
+<script src="~/js/datatables/tablas/global.js"></script>
+<script src="~/js/leaflet/l.latlng.utm.js"></script>
+<script src="~/js/leaflet/mapa.js"></script>

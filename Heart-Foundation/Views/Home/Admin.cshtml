@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <br />
+   <div class="row">
+        <div class="col-md-4">
+            <a href="@Url.Action("Index","Usuarios")">
+                <i><img src="~/img/usuarios.png" title="Usuarios"/></i>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="@Url.Action("AsignarSolicitudes","Solicitudes")">
+                <i><img src="~/img/asignar.png" title="Asignar Solicitudes" height="230px" /></i>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="@Url.Action("Index","Solicitudusuario")">
+                <i><img src="~/img/solicitarusuario.png" title="Ver Solicitudes de Usuarios" height="230px" /></i>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="@Url.Action("Index","Representante")">
+                <i><img src="~/img/representante.png" title="Representantes" height="230px" /></i>
+            </a>
+        </div>
+   </div>
+
+    <!-- Aquí puede ir el contenido específico de esta página -->
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/js/scripts.js"></script>
+</div>
+

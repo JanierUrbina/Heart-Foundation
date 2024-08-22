@@ -1,0 +1,80 @@
+﻿@model Heart_Foundation.DTO.SolicitudPersona
+
+<div class="modal-content">
+    <div class="modal-body">
+        <div class="modal-header">
+
+            <button type="button" class="btn btn-danger close" data-dismiss="modal" aria-label="Close" onclick=" $(this).modal('hide');">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+        <div id="accordion">
+            <div class="card">
+                <br />
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                           Solicitud
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <ul>
+                            <li>Numero Solicitud: @Model.NumeroSolicitud</li>
+                            <li>Motivo: @Model.Motivo</li>
+                            <li>Direccion: @Model.Direccion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Persona
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <ul>
+                            <li>Número Telefónico: @Model.NumeroTelefonico</li>
+                            <li>Nombre de Usuario: @Model.UserName</li>
+                            <li>Correo: @Model.Correo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+        <div class="modal-footer">
+            <p style="margin: 0 0 0 0">
+                <input type="checkbox" id="checkval" onclick="Valido()" class="form-check-input" />
+                <label for="checkval">Aceptar</label>
+
+                <input type="checkbox" id="checknoval" onclick="Invalido()" class="form-check-input" />
+                <label for="checknoval">Rechazar</label>
+            </p>
+            <div class="form-group" style="display:none" id="divnota">
+                <div class="input-field">
+                    <input type="text" id="Nota" class="form-control" placeholder="Nota" />
+                </div>
+            </div>
+
+            <div class="right">
+                <button id="savethis" data-id="@Model.Id" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script src="~/js/datatables/tablas/global.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="~/js/solicitudes/aceptar.js"></script>
